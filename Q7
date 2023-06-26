@@ -1,0 +1,38 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func wordLetterCount(frase string) map[string]map[rune]int {
+	wordCount := make(map[string]map[rune]int)
+
+	words := strings.Fields(frase)
+
+	for _, word := range words {
+		letterCount := make(map[rune]int)
+
+		for _, char := range word {
+			letterCount[char]++
+		}
+
+		wordCount[word] = letterCount
+	}
+
+	return wordCount
+}
+
+func main() {
+	frase := "Esta é uma frase de exemplo"
+
+	wordCount := wordLetterCount(frase)
+
+	for word, letterCount := range wordCount {
+		fmt.Println(word)
+		for letter, count := range letterCount {
+			fmt.Printf("%c: %d\n", letter, count)
+		}
+		fmt.Println()
+	}
+}
