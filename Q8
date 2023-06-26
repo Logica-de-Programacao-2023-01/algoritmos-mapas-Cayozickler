@@ -1,0 +1,37 @@
+package main
+
+import (
+	"fmt"
+)
+
+func calculateExpenses(sharedExpenses map[string]float64) map[string]float64 {
+	totalExpense := 0.0
+	for _, expense := range sharedExpenses {
+		totalExpense += expense
+	}
+
+	averageExpense := totalExpense / float64(len(sharedExpenses))
+
+	expenseMap := make(map[string]float64)
+
+	for name, expense := range sharedExpenses {
+		expenseMap[name] = expense - averageExpense
+	}
+
+	return expenseMap
+}
+
+func main() {
+	sharedExpenses := map[string]float64{
+		"Alice":  100.0,
+		"Bob":    50.0,
+		"Charlie": 75.0,
+		"Dave":   120.0,
+	}
+
+	expenseMap := calculateExpenses(sharedExpenses)
+
+	for name, expense := range expenseMap {
+		fmt.Printf("%s: %.2f\n", name, expense)
+	}
+}
