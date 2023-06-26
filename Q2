@@ -1,0 +1,40 @@
+package main
+
+import (
+	"fmt"
+)
+
+func mergeMaps(map1, map2 map[string]int) map[string]int {
+	mergedMap := make(map[string]int)
+
+	for key, value := range map1 {
+		mergedMap[key] = value
+	}
+
+	for key, value := range map2 {
+		mergedMap[key] = value
+	}
+
+	return mergedMap
+}
+
+func main() {
+	map1 := map[string]int{
+		"apple":  3,
+		"banana": 5,
+		"orange": 2,
+	}
+
+	map2 := map[string]int{
+		"apple":  1,
+		"grape":  4,
+		"kiwi":   3,
+		"banana": 2,
+	}
+
+	mergedMap := mergeMaps(map1, map2)
+
+	for key, value := range mergedMap {
+		fmt.Printf("%s: %d\n", key, value)
+	}
+}
