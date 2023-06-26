@@ -1,0 +1,24 @@
+package main
+
+import (
+	"fmt"
+)
+
+func characterFrequency(str string) map[rune]int {
+	frequency := make(map[rune]int)
+
+	for _, char := range str {
+		frequency[char]++
+	}
+
+	return frequency
+}
+
+func main() {
+	text := "Hello, world!"
+	freqMap := characterFrequency(text)
+
+	for char, count := range freqMap {
+		fmt.Printf("%c: %d\n", char, count)
+	}
+}
