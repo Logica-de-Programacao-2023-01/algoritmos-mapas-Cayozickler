@@ -1,0 +1,31 @@
+package main
+
+import (
+	"fmt"
+)
+
+func mergeWordCounts(wordCountList []map[string]int) map[string]int {
+	mergedMap := make(map[string]int)
+
+	for _, wordCount := range wordCountList {
+		for word, count := range wordCount {
+			mergedMap[word] += count
+		}
+	}
+
+	return mergedMap
+}
+
+func main() {
+	wordCountList := []map[string]int{
+		{"apple": 3, "banana": 2, "orange": 1},
+		{"apple": 1, "grape": 4, "kiwi": 3},
+		{"banana": 2, "orange": 2},
+	}
+
+	mergedMap := mergeWordCounts(wordCountList)
+
+	for word, count := range mergedMap {
+		fmt.Printf("%s: %d\n", word, count)
+	}
+}
